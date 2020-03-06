@@ -6,18 +6,21 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public int winValue;
+    private int winValue;
     public Text countText;
     public Text winText;
     private Rigidbody rb;
     private int count;
     public Vector3 lastVelocity = Vector3.zero;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetCountText();
         winText.text = "";
+
+        winValue = GameObject.FindGameObjectsWithTag("Pick Up").Length;
     }
     private void FixedUpdate()
     {
